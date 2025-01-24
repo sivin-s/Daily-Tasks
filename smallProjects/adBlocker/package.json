@@ -1,0 +1,16 @@
+{
+  "name": "adblocker",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "background.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/firefox-webext-browser": "^120.0.4",
+    "chrome-types": "^0.1.333"
+  }
+}

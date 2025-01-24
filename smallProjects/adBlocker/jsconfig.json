@@ -1,0 +1,14 @@
+// for chrome browser
+{
+    "typeAcquisition": {
+        "include": ["chrome","firefox-webext-browser"]
+    }
+}
+
+// firefox browser 
+
+// {
+//     "typeAcquisition": {
+//         "include": ["firefox-webext-browser"]
+//     }
+// }

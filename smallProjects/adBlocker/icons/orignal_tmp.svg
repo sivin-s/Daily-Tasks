@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background Gradient -->
+  <defs>
+    <radialGradient id="radialGradient"  cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+    </radialGradient>
+  </defs>
+
+  <!-- Circular Stop Sign -->
+  <circle cx="100" cy="100" r="64" fill="red" stroke="#fff" stroke-width="13" />
+
+  <!-- Added Letters AB (enlarged) -->
+  <text x="100" y="121" text-anchor="middle" fill="white" font-family="sans-serif" font-size="60" font-weight="bold">AB</text>
+
+  <!-- Border Ring -->
+  <circle cx="100" cy="100" r="70" fill="none" stroke="none" stroke-width="2.5" stroke-dasharray="5,5" />
+</svg>
