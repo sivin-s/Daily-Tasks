@@ -1,17 +1,4 @@
-/*
-const arr=[22,29,100,-23,32,40]
-let pivot=arr[arr.length-1] //end value
-const rightArr=[]
-const leftArr=[]
-for(let i=0;i<arr.length-1;i++){
-   if(arr[i]>pivot){
-     rightArr.push(arr[i])
-   }else if(arr[i]<pivot){
-     leftArr.push(arr[i])
-   }
-}
-console.log(leftArr.concat(pivot,...rightArr));
-*/
+
 // recursion
 
 function quickSort(arr=[22,29,100,-23,32,40]){
@@ -42,7 +29,7 @@ function quickSort(arr=[22,29,100,-23,32,40]){
    return [...quickSort(leftArr),pivot,...quickSort(rightArr)]
 }
 
-console.log(quickSort())
+// console.log(quickSort())
 
 // worst case complexity - O(n^2) 
 // Avg case complexity - O(nlogn) //log n -> recursively divided arr into smaller arrays , n for for loop

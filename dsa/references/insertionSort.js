@@ -8,6 +8,6 @@ for(let i=1;i<arr.length;i++){
       arr[j+1]=arr[j]
       --j
    }
-   
+   arr[j+1]=arr[t]
 }
 console.log('finally > ',arr);

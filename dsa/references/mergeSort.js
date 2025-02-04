@@ -4,7 +4,7 @@ function mergeSorted(arr){
     const leftArr=arr.slice(0,mid);
     const rightArr=arr.slice(mid);
     return merge(mergeSorted(leftArr),mergeSorted(rightArr));
-}
+} 
 
 function merge(leftArr,rightArr){
 

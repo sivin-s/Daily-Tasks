@@ -32,7 +32,7 @@ class circularQueue{
        this.items[this.front]=null
     //    this.front++
        this.front=((this.front+1)%this.capacity) // to ensure //ex: capacity is 5 range goes 1-5 , to ensure it goes 0 to 4
-       this.circularQueue--
+       this.currentLength--
         if(this.isEmpty()){
             this.front=-1
             this.rear=-1
