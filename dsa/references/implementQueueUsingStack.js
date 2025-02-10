@@ -4,10 +4,10 @@ class QueueUsingStack{
         this.stackOne=[]
         this.stackTwo=[]
     }
-    push(val){
+    enqueue(val){
       this.stackOne.push(val)
     }
-    pop(){
+    dequeue(){
        if(this.stackTwo.length===0){
            while(this.stackOne.length>0){
                 this.stackTwo.push(this.stackOne.pop())
@@ -26,9 +26,9 @@ class QueueUsingStack{
 }
 
 const o = new QueueUsingStack()
-o.push(5)
-o.push(50)
-o.pop()
-o.pop()
+o.enqueue(5)
+o.enqueue(50)
+o.dequeue()
+o.dequeue()
 console.log(o);
 
