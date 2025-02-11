@@ -6,8 +6,8 @@
   "author": "",
   "type": "module",
   "scripts": {
-    "dev": "npx parcel index.html",
-    "build": "npx parcel build index.html",
+    "dev": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "devDependencies": {
@@ -17,5 +17,8 @@
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
-  }
+  },
+  "browserslist":[
+    "last 2 chrome version"
+  ]
 }
