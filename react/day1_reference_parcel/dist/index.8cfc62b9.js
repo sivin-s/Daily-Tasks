@@ -2954,17 +2954,20 @@ var _clientDefault = parcelHelpers.interopDefault(_client);
 const h1 = /*#__PURE__*/ (0, _reactDefault.default).createElement('h1', {
     style: {
         color: 'red'
-    }
+    },
+    key: 'h1'
 }, "Heading h1");
 const h2 = /*#__PURE__*/ (0, _reactDefault.default).createElement('h2', {
     style: {
         color: 'orange'
-    }
+    },
+    key: 'h2'
 }, "Heading h2");
 const h3 = /*#__PURE__*/ (0, _reactDefault.default).createElement('h3', {
     style: {
         color: 'green'
-    }
+    },
+    key: 'h3'
 }, "Heading h3");
 const container = /*#__PURE__*/ (0, _reactDefault.default).createElement('div', {
     style: {

@@ -2954,13 +2954,13 @@ var _appJsxDefault = parcelHelpers.interopDefault(_appJsx);
 (0, _client.createRoot)(document.getElementById('root')).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react.StrictMode), {
     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appJsxDefault.default), {}, void 0, false, {
         fileName: "src/main.jsx",
-        lineNumber: 8,
+        lineNumber: 5,
         columnNumber: 9
     }, undefined)
 }, void 0, false, {
     fileName: "src/main.jsx",
-    lineNumber: 7,
-    columnNumber: 5
+    lineNumber: 4,
+    columnNumber: 52
 }, undefined));
 
   $parcel$ReactRefreshHelpers$9864.postlude(module);
@@ -18349,13 +18349,13 @@ function App() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _components.HiSay), {}, void 0, false, {
             fileName: "src/App.jsx",
-            lineNumber: 5,
+            lineNumber: 4,
             columnNumber: 9
         }, this)
     }, void 0, false, {
         fileName: "src/App.jsx",
-        lineNumber: 4,
-        columnNumber: 5
+        lineNumber: 3,
+        columnNumber: 10
     }, this);
 }
 _c = App;
@@ -18794,8 +18794,8 @@ function HiSay() {
         children: "Hi Say"
     }, void 0, false, {
         fileName: "src/components/HiSay.jsx",
-        lineNumber: 4,
-        columnNumber: 5
+        lineNumber: 2,
+        columnNumber: 10
     }, this);
 }
 _c = HiSay;

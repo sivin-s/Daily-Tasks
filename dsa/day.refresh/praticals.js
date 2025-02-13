@@ -1,9 +1,14 @@
 /*
-  Q,  Check for anagrams?
+8. Find All Substrings of a String
+Problem: Given a string, print all possible substrings.
 
-  Input: "listen", "silent"
-  Output: true
-  Input: "hello", "world"
-  Output: false
+Input: "abc"
+Output: ["a", "ab", "abc", "b", "bc", "c"]
 
 */
+
+function find(str){
+   
+}
+
+console.log(find("abc"));
