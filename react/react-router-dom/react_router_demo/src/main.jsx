@@ -28,17 +28,23 @@ const appRouter = createBrowserRouter([
         // element: <Body/>  
       },
         {
-    path: '/about',
-    element: <AboutPage/>
-  },
-  {
-    path:"/contact",
-    // element: <Contact/>
-  },
-  {
-    path: "/restaurant/:id", //! dynamic routing
-    element: <RestaurantMenu/>
-  }
+        path: '/about',
+        element: <AboutPage/>,
+        children:[   //! <Outlet>  assigned in About Page <About/> 
+          {
+            path:'profile', // localhost:0000/about/profile
+            element: <Profile/>
+          }
+        ]
+      },
+      {
+        path:"/contact",
+        element: <Contact/>
+      },
+      {
+        path: "/restaurant/:id", //! dynamic routing
+        element: <RestaurantMenu/>
+       }
     ]
   }
   

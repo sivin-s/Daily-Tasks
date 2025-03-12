@@ -31,7 +31,7 @@ const Footer = ()=>{
 const Cards=()=>{
     return(
         <div className="card">
-            <img alt="img" src="https://shorturl.at/6M9XX"/>
+            <img alt="img" src=""/>
         </div>
     )
 }

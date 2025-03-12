@@ -1,7 +1,11 @@
+import {Outlet}  from 'react-router-dom'
 
 function AboutPage() {
   return (
-    <div>AboutPage</div>
+    <div>
+      AboutPage
+      <Outlet/> {/* children pass*/}
+    </div>
   )
 }
 
