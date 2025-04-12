@@ -1,4 +1,4 @@
-const arr=[5,3,1,2,0]
+const arr=[3,5,1,2,0]
 for(let i=1;i<arr.length;i++){
     let t=arr[i]
    
@@ -8,6 +8,6 @@ for(let i=1;i<arr.length;i++){
       arr[j+1]=arr[j]
       --j
    }
-   arr[j+1]=arr[t]
+   arr[j+1]=t
 }
 console.log('finally > ',arr);
