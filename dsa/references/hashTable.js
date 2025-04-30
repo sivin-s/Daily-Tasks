@@ -6,12 +6,13 @@ class HashTable{
         this.size=size
     }
     #_hash(key){
-        let total=0
+        let hash=0
+        const prime = 31
         for(let i=0;i<key.length;i++){
             // console.log(i,'<.>',key.charCodeAt(i));
-           total+=key.charCodeAt(i) 
+           hash = (hash * prime + key.charCodeAt(i) )%this.size
         }
-        return total%this.size // converting string key to hash numerical index (key) ( thats' why we use % 'modular operator' to ensure).
+        return total%this.size  // converting string key to hash numerical index (key) ( thats' why we use % 'modular operator' to ensure).
         // why we use size for n of array is 5 range 1-5 we want 0-4 range.
     }
     set(key,value){
