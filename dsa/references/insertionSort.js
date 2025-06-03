@@ -6,7 +6,7 @@ for(let i=1;i<arr.length;i++){
   
    while(preIndex>=0&&arr[preIndex]>target){
       arr[preIndex+1]=arr[preIndex]
-      --preIndex
+      --preIndex // why we decrement the preIndex because we want to check from 0 . if not decrement the preindex we only compare with previous and adjacent ele not all elements.
    }
    arr[preIndex+1]=target
 }
