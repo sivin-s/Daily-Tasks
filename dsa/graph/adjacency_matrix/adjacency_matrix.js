@@ -1,5 +1,5 @@
 // undirected graph (use in dense graph) -> adjacency matrix (bidirectional connection,use back-tracking).
-
+// adjacency matrix use "every node" connected which each other
 /*
     A - B
     A - c

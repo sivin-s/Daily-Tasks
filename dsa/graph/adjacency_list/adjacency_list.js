@@ -1,4 +1,5 @@
 // "has loop" checking method  is pending eg: B --> B
+// adjacency list use not every node "few nodes" connected which each other
 
 class GRAPH{  // undirected graph (use in sparse graph)
     constructor(){
