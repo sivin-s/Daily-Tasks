@@ -128,11 +128,12 @@ class BST{
     //           return node;
     //         }else if(value<node.val){
     //           node.left =  removeNode(node.left,value)
-    //           return node
-    //         }else{
+    //          
+    //         }else if (value>node.val){
     //             node.right =  removeNode(node.right,value)
-    //             return node
+    //            
     //         }
+    //     return node
     //     }
     //     this.root =  removeNode(this.root,value) 
     // }
@@ -140,7 +141,7 @@ class BST{
     remove(value){
         this.root = removeNode(this.root,value)
         function removeNode(node,value){
-            if(node===null){
+            if(node===null){ // base case
                 return null
             }
             if(value===node.val){
