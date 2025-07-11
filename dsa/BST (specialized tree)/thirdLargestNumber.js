@@ -1,4 +1,4 @@
-class Node{
+class Node{ //  For recursion inOrder it is in bottom.
     constructor(value){
         this.value=value
         this.left=null
@@ -45,7 +45,7 @@ class BST{
 
         current = stack.pop()
         ++count
-        if(count===1) return current.value
+        if(count===3) return current.value
         current = current.left
      }
    }
@@ -60,3 +60,24 @@ bst.insert(6000)
 console.log(bst.search(100))
 
 console.log(bst.thirdLargest())
+
+// recursion way finding kth largest 
+
+kLargest(k) {
+    let count = 0;
+    let result = null;
+
+    function reverseInOrder(node) {
+        if (node === null || result !== null) return;
+        reverseInOrder(node.right);
+        count++;
+        if (count === k) {
+            result = node.val;
+            return;
+        }
+        reverseInOrder(node.left);
+    }
+
+    reverseInOrder(this.root);
+    return result;
+}
