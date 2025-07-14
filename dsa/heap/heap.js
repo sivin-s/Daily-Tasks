@@ -1,80 +1,66 @@
-class MinHeap{   //eg: min-heap : parent node (value -> 0) -> left node (value -> 1) -> right node (value -> 2)
-    constructor(){  // eg : max-heap : parent node (value -> 2) -> left node (value -> 1) -> right node (value -> 0)
-        this.heap=[]
+// extract reso  :  https://reginafurness.medium.com/implementing-a-max-heap-in-javascript-b3e2f788390c
+function heapSort(arr){
+    let sorted= [];
+    let heap1 = new MaxHeap();
+    for(let i=0;i<arr.length;i++){
+        heap1.insert(arr[i]);
     }
-    swap(i,j){  // swap
-        [[this.heap[i]],[this.heap[j]]]=[[this.heap[j]],[this.heap[i]]]
+    for(let i=0;i<arr.length;i++){
+        sorted.push(heap1.delete());
     }
-
-    parentIndex(i){ // to get parent index (helper fn)
-        return Math.floor((i-1)/2);
-    }
-
-    leftChildIndex(i){ // to  get right index (helper fn)
-        return 2*i+1;
-    }
-
-    rightChildIndex(i){ // to get right child index (helper fn)
-        return 2*i+2;
-    }
-
-    insert(value){
-        this.heap.push(value)
-        let currentIndex = this.heap.length-1;
-        while(currentIndex>0 && this.heap[currentIndex] < this.heap[this.parentIndex(currentIndex)]){
-            this.swap(currentIndex,this.parentIndex(currentIndex));
-            currentIndex = this.parentIndex(currentIndex)
-        }
-    }
-
-    // extract the minimum element (root)  from the heap
-    extractMin(){
-        if(this.heap.length===0) return null;
-        const min = this.heap[0];  // Root is the minimum element
-        const lastElement = this.heap.pop();  // Remove the last element
-        if(this.heap.length>0){
-            this.heap[0] = lastElement // Move the last element to the root
-            this.heapifyDown(0);  // Heapify down to restore the heap property
-        }
-        return min;
-    }
-
-    // heapify down to maintain the heap property
-    heapifyDown(index){
-        let smallest = index;
-        const left = this.leftChildIndex(index)
-        const right = this.rightChildIndex(index)
-
-        // find the smallest among the current node and its children
-        // why we use " left < this.heap.length " take heap length because to avoid out of boundary error.
-        if(left<this.heap.length && this.heap[left] < this.heap[smallest]){
-            smallest = left
-        }
-        if(right<this.heap.length && this.heap[right] < this.heap[smallest]){
-            smallest = right
-        }
-        // if the smallest isn't the current node, swap and continue heapifying.
-        if(smallest !== index){
-            this.swap(index,smallest);
-            this.heapifyDown(smallest);
-        }
-    }
-
-    peek(){
-        return this.heap[0]
-    }
-
-    size(){ // get the size of the heap
-        return this.heap.length
-    }
+    return sorted;
 }
 
-const minHeap = new MinHeap()
-minHeap.insert(10)
-minHeap.insert(5)
-minHeap.insert(20)
-minHeap.insert(1)
+class MaxHeap{  
+    constructor(){
+        this.heap=[]
+    }
+    parentIndex(index){
+        return Math.floor((index-1)/2)
+    }
+    leftChildIndex(index){
+        return (2*index+1);
+    }
+    rightChildIndex(index){
+        return (2*index+2);
+    }
+    swap(a,b){
+        let temp = this.heap[a];
+        this.heap[a]= this.heap[b];
+        this.heap[b] = temp;
+        //     [this.values[index1], this.values[index2]] = [this.values[index2], this.values[index1]];
+    }
+    insert(item){
+        this.heap.push(item);
+        let index = this.heap.length-1
+        let parent = this.parentIndex(index)
+        while(this.heap[parent]&&this.heap[parent]<this.heap[index]){
+            this.swap(parent,index)
+            index = this.parentIndex(index)
+            parent =this.parentIndex(index)
+        }
+    }
+    delete(){
+        let item  = this.heap.shift()
+        this.heap.unshift(this.heap.pop())
+        let index = 0;
+        let leftChild = this.leftChildIndex(index);
+        let rightChild = this.rightChildIndex(index);
+        while(this.heap[leftChild] && this.heap[leftChild] > this.heap[index] || this.heap[rightChild] > this.heap[index]){
+            let max =  leftChild;
+            if(this.heap[rightChild] && this.heap[rightChild]>this.heap[max]){
+                max = rightChild
+            }
+            this.swap(max,index)
+            index = max;
+            leftChild = this.leftChildIndex(max);
+            rightChild = this.rightChildIndex(max);
+        }
+        return item;
+    }
+   
+} // class
 
-console.log("Heap :",minHeap.heap);
-console.log("Extract MIn :", minHeap.extractMin())
-console.log("Heap after extraction : ", minHeap.heap);
+let arr = [1,6,2,3,7,3,4,6,9];
+arr = heapSort(arr);
+console.log(arr);
