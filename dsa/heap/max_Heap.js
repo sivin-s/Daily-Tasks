@@ -5,7 +5,7 @@ function heapSort(arr){
     for(let i=0;i<arr.length;i++){
         heap1.insert(arr[i]);
     }
-    for(let i=0;i<arr.length;i++){
+    for(let i=0;i<arr.length;i++){ // for  extracting the sorted value
         sorted.push(heap1.delete());
     }
     return sorted;
@@ -30,18 +30,18 @@ class MaxHeap{
         this.heap[b] = temp;
         //     [this.values[index1], this.values[index2]] = [this.values[index2], this.values[index1]];
     }
-    insert(item){
-        this.heap.push(item);
-        let index = this.heap.length-1
-        let parent = this.parentIndex(index)
-        while(this.heap[parent]&&this.heap[parent]<this.heap[index]){
-            this.swap(parent,index)
-            index = this.parentIndex(index)
-            parent =this.parentIndex(index)
+    insert(val){
+        this.heap.push(val);
+        let currentIndex = this.heap.length-1
+        let parentIndex = this.parentIndex(currentIndex)
+        while(this.heap[parentIndex]&&this.heap[parentIndex]<this.heap[currentIndex]){
+            this.swap(parentIndex,currentIndex)
+            currentIndex = this.parentIndex(currentIndex)
+            parentIndex =this.parentIndex(currentIndex)
         }
     }
     delete(){
-        let item  = this.heap.shift()
+        let val  = this.heap.shift()
         this.heap.unshift(this.heap.pop())
         let index = 0;
         let leftChild = this.leftChildIndex(index);
@@ -56,7 +56,7 @@ class MaxHeap{
             leftChild = this.leftChildIndex(max);
             rightChild = this.rightChildIndex(max);
         }
-        return item;
+        return val;
     }
    
 } // class
