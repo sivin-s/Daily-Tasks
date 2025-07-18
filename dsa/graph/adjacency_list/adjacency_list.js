@@ -39,13 +39,14 @@ class GRAPH{  // undirected graph (use in sparse graph)
         if(!this.adjacencyList[vertex]){
             return
         }
-        for(const adjacencyVertex in this.adjacencyList){
-             this.removeEdge(vertex,adjacencyVertex)
+        for(const neighbor of this.adjacencyList[vertex]){
+             this.removeEdge(vertex,neighbor)
         }
         delete this.adjacencyList[vertex]
     }
 
     bfs(startVertex){  // traverse
+        if(!this.adjacencyList[startVertex]) return []
         const queue=[startVertex];
         const visited = {};
         const result = []
@@ -64,6 +65,7 @@ class GRAPH{  // undirected graph (use in sparse graph)
     }
 
     dfs(startVertex){  // traverse
+        if(!this.adjacencyList[startVertex]) return []
         const visited={}
         const stack = [startVertex]
         const result =[]

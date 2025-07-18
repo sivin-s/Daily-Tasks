@@ -1,66 +1,71 @@
-// extract reso  :  https://reginafurness.medium.com/implementing-a-max-heap-in-javascript-b3e2f788390c
-function heapSort(arr){
-    let sorted= [];
-    let heap1 = new MaxHeap();
-    for(let i=0;i<arr.length;i++){
-        heap1.insert(arr[i]);
-    }
-    for(let i=0;i<arr.length;i++){ // for  extracting the sorted value
-        sorted.push(heap1.delete());
-    }
-    return sorted;
-}
-
-class MaxHeap{  
+class MaxHeap{
     constructor(){
         this.heap=[]
     }
-    parentIndex(index){
-        return Math.floor((index-1)/2)
+    _parentIndex(index){
+        return Math.floor((index-1)/2);
     }
-    leftChildIndex(index){
+    _leftChildIndex(index){
         return (2*index+1);
     }
-    rightChildIndex(index){
+    _rightChildIndex(index){
         return (2*index+2);
     }
-    swap(a,b){
-        let temp = this.heap[a];
-        this.heap[a]= this.heap[b];
-        this.heap[b] = temp;
-        //     [this.values[index1], this.values[index2]] = [this.values[index2], this.values[index1]];
+    _swap(index1,index2){
+        let tmp = this.heap[index1];
+        this.heap[index1] = this.heap[index2];
+        this.heap[index2] = tmp;
+    //   [this.heap[index1],this.heap[index2]]=[this.heap[index1],this.heap[index2]]
+    }
+    _heapifyUp(index){
+        while(index>0){
+            let parentIndex = this._parentIndex(index);
+            if(this.heap[parentIndex]>=this.heap[index]){
+                break;
+            }
+            this._swap(parentIndex,index);
+            index = parentIndex;
+        }
     }
     insert(val){
         this.heap.push(val);
-        let currentIndex = this.heap.length-1
-        let parentIndex = this.parentIndex(currentIndex)
-        while(this.heap[parentIndex]&&this.heap[parentIndex]<this.heap[currentIndex]){
-            this.swap(parentIndex,currentIndex)
-            currentIndex = this.parentIndex(currentIndex)
-            parentIndex =this.parentIndex(currentIndex)
-        }
+        this._heapifyUp(this.heap.length-1);
     }
     delete(){
-        let val  = this.heap.shift()
-        this.heap.unshift(this.heap.pop())
-        let index = 0;
-        let leftChild = this.leftChildIndex(index);
-        let rightChild = this.rightChildIndex(index);
-        while(this.heap[leftChild] && this.heap[leftChild] > this.heap[index] || this.heap[rightChild] > this.heap[index]){
-            let max =  leftChild;
-            if(this.heap[rightChild] && this.heap[rightChild]>this.heap[max]){
-                max = rightChild
-            }
-            this.swap(max,index)
-            index = max;
-            leftChild = this.leftChildIndex(max);
-            rightChild = this.rightChildIndex(max);
-        }
-        return val;
+         let val =  this.heap[0]
+         this.heap[0] =   this.heap.pop()
+         this._heapifyDown(0)
+         return val;
     }
-   
-} // class
+    _heapifyDown(index){
+        while(true){
+            let leftChild = this._leftChildIndex(index)
+            let rightChild = this._rightChildIndex(index)
+            let largest = index;
+            if(leftChild<this.heap.length && this.heap[leftChild]>this.heap[largest]){
+                largest = leftChild
+            }
+            if(rightChild<this.heap.length &&  this.heap[rightChild]>this.heap[largest]){
+                largest = rightChild
+            }
+            if(largest===index){
+                break;
+            }
+            this._swap(index,largest)
+            index = largest;
+        }
+    }
+}
 
-let arr = [1,6,2,3,7,3,4,6,9];
-arr = heapSort(arr);
-console.log(arr);
+function heapSorted(arr){
+    const sorted = []
+    const heap1 = new MaxHeap()
+    for(let i=0;i<arr.length;i++){
+        heap1.insert(arr[i])
+    }
+    // for(let i=0;i<arr.length;i++){
+    //     sorted.push(heap1.delete())
+    // }
+    return heap1;
+}
+console.log(heapSorted([1,20,-1,40,60]))

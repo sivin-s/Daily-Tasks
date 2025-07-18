@@ -2,58 +2,87 @@ class MinHeap{
     constructor(){
         this.heap=[]
     }
-  parentIndex(index){
-    return Math.floor((index-1)/2)
-  }
-  leftIndex(index){
-    return  (2*index+1)
-  }
-  rightIndex(index){
-    return (2*index+2)
-  }
-  swap(a,b){
-    let temp = this.heap[a]
-    this.heap[a] = this.heap[b]
-    this.heap[b] = temp 
-   }
-  insert(val){
-    this.heap.push(val)
-    let currIndex = this.heap.length-1
-    let parentIndex = this.parentIndex(currIndex)
-    while(this.heap[parentIndex]&&this.heap[parentIndex]>this.heap[currIndex]){
-        this.swap(currIndex,parentIndex)
-        currIndex = this.parentIndex(currIndex)
-        parentIndex = this.parentIndex(currIndex)
+    _parentIndex(index){
+        return Math.floor((index-1)/2);
     }
-  }
-  delete(){
-    let val =  this.heap.shift()
-    this.heap.unshift(this.heap.pop())
-    let index = 0
-    let left = this.leftIndex(index)
-    let right = this.rightIndex(index)
-    while(this.heap[left]&&this.heap[left]<this.heap[index]||this.heap[right]<this.heap[index]){
-        let min = left
-        if(this.heap[right]&&this.heap[right]<this.heap[index]){
-            min = right
+    _leftChildIndex(index){
+        return ((2*index)+1);
+    }
+    _rightChildIndex(index){
+        return ((2*index)+2);
+    }
+    _swap(index1,index2){  
+        let tmp = this.heap[index1]
+        this.heap[index1] = this.heap[index2]
+        this.heap[index2] = tmp
+    }
+    insert(val){
+        this.heap.push(val)
+        this._heapifyUp(this.heap.length-1)
+    }
+    _heapifyUp(index){
+        while(index>0){
+            let parentIndex  = this._parentIndex(index)
+            if(this.heap[parentIndex]<=this.heap[index]){
+                break;
+            }
+            this._swap(parentIndex,index)
+            index= parentIndex
         }
-        this.swap(min,index)
-        left = this.leftIndex(min)
-        right = this.rightIndex(min)
     }
-    return val
-  }
+    _heapifyDown(index){
+        while(true){
+            let leftChild= this._leftChildIndex(index);
+            let rightChild= this._rightChildIndex(index);
+            let smallest= index;
+            if(leftChild<this.heap.length && this.heap[leftChild]<this.heap[smallest]){
+                smallest= leftChild
+            }
+            if(rightChild<this.heap.length && this.heap[rightChild]<this.heap[smallest]){
+                smallest= rightChild // 3 < 10
+            }
+            if(smallest===index){
+                break;
+            }
+            this._swap(index,smallest)
+            index = smallest
+        }
+    }
+    delete(){
+        if(this.heap.length===0) return undefined
+        if(this.heap.length===1) return this.heap.pop()
+
+        const val = this.heap[0]
+        this.heap[0] = this.heap.pop()
+        this._heapifyDown(0)
+        return val
+    }
+    isEmpty(){
+        return this.heap.length===0
+    }
+    isPeek(){
+        return this.heap[0]
+    }
+    extractMin(){
+        if(this.heap.length===0) return undefined
+        if(this.heap.length===1) return this.heap.pop()
+        const min = this.heap[0]
+         this.heap[0]= this.heap.pop()
+         this._heapifyDown(0)
+         return min
+    }
 }
-const arr = [5,4,3,2,1]
-function heapSort(arr){
+
+function heapSorted(arr){
+    const sorted= [];
     const heap1 = new MinHeap()
-    const sorted = []
-    for(const ele of arr){
-      heap1.insert(ele)
+    for(let i=0;i<arr.length;i++){
+        heap1.insert(arr[i])
     }
-     for(const ele of arr){
-        sorted.push(heap1.delete())
-     }
+   while(!heap1.isEmpty()){
+       sorted.push(heap1.delete())
+   }
     return sorted
 }
-console.log(heapSort(arr))
+
+console.log(heapSorted([2,1,-4,800,3,-5,300]))
