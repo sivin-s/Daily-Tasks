@@ -50,7 +50,7 @@ class MinHeap{
     }
     delete(){
         if(this.heap.length===0) return undefined
-        if(this.heap.length===1) return this.heap.pop()
+        if(this.heap.length===1) return this.heap.pop() // prevents from loop. deleting last element and again insert same index.
 
         const val = this.heap[0]
         this.heap[0] = this.heap.pop()

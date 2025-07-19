@@ -32,7 +32,9 @@ class MaxHeap{
         this._heapifyUp(this.heap.length-1);
     }
     delete(){
-         let val =  this.heap[0]
+        if(this.heap.length===0) return undefined
+        if(this.heap.length===1) return this.heap.pop()
+         let val =  this.heap[0] // [4]
          this.heap[0] =   this.heap.pop()
          this._heapifyDown(0)
          return val;
@@ -54,6 +56,9 @@ class MaxHeap{
             this._swap(index,largest)
             index = largest;
         }
+    }
+    isEmpty(){
+        return this.heap.length===0
     }
 }
 
