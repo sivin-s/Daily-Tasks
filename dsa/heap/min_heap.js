@@ -24,7 +24,9 @@ class MinHeap{
         while(index>0){
             let parentIndex  = this._parentIndex(index)
             if(this.heap[parentIndex]<=this.heap[index]){
-                break;
+                break; // breaking the loop
+                // means : parent is already small there is no need of swapping parent and child node. It cause loop
+                // cause error.
             }
             this._swap(parentIndex,index)
             index= parentIndex
