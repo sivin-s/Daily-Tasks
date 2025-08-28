@@ -43,7 +43,7 @@ class MinHeap{
             if(rightChild<this.heap.length && this.heap[rightChild]<this.heap[smallest]){
                 smallest= rightChild // 3 < 10
             }
-            if(smallest===index){
+            if(smallest===index){ // finally break it found leaf node.
                 break;
             }
             this._swap(index,smallest)

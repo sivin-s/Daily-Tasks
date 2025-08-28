@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDN React-js</title>
+    <script defer crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script defer  crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root">Not Rendered!</div>
+    <script>
+        window.document.addEventListener("DOMContentLoaded",()=>{
+        const heading = React.createElement("h1",{id:"heading"},"This is heading!!",[React.createElement("p",null,"hi"),React.createElement("p",null,"h1")]);
+        const root = ReactDOM.createRoot(document.getElementById("root"))
+        root.render(heading);
+
+    //    const h =  React.createElement("ul",null,Array.from({length:5}).map(()=> React.createElement("h1",{key:Math.random()},React.createElement("p",null,'p'))))
+    //    const root = ReactDOM.createRoot(document.getElementById("root"))    
+    //    root.render(h)
+    })
+    </script>
+</body>
+</html>
