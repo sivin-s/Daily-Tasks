@@ -1,7 +1,7 @@
-import {useReducer} from 'react'
+import {useEffect, useReducer} from 'react'
 
-function reducer(state, action){
-  console.log(action)
+function reducer(state, action){  // want to pure fn
+  // console.log(action)
    switch(action.type){
      case 'increment':
       return {...state, value: state.value + action.payload}
@@ -17,6 +17,9 @@ function reducer(state, action){
 function App() {
   const [state, dispatch] = useReducer(reducer,{
     value: 0
+  })
+  useEffect(()=>{
+     console.log("hello")
   })
   console.log(state)
   return(<>
