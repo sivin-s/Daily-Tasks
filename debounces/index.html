@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounces</title>
+</head>
+<body>
+
+    <input type="text">
+
+
+
+
+    <!-- script debounces - delaying the function calls  -->
+    <script defer>
+        document.addEventListener("DOMContentLoaded",()=>{
+
+            const textNode = document.querySelector('input[type="text"]')
+         
+
+            const debouncesInit = (fn, delay)=>{
+                console.log(delay)
+                let timer;
+                return function(...args){
+                    let context = this // 'this' contain event occurred  element get as 'this' from addEventListener()
+                    clearTimeout(timer)
+                    timer= setTimeout(()=>{
+                        fn.apply(context,args)
+                    },delay)
+                }
+            }
+            
+            const debouncesFetcher = debouncesInit(fetcher,1000)
+           
+            function fetcher(){
+                console.log('fetched.....',this.value)
+            }
+
+   textNode.addEventListener("keyup",debouncesFetcher)
+        })
+    </script>
+</body>
+</html>

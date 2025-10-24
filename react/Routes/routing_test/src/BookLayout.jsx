@@ -9,6 +9,8 @@ export const BookLayout = ()=>{
                <Link to="/books/new">New Book</Link>
                {/* dynamic is outlet(children) */}
             <Outlet context="hello"/>
+            <Outlet context="hello"/>
+        
         </>
     )
 }

@@ -21,7 +21,7 @@ function App(){
             {/* <Route path='/fuck/:id' element={<UserDetails/>}/>  */}
              {/*static*/}
             {/* <Route path='/fuck/new' element={<UserDetails/>}/>  */}
-            {/* <Route path='/fuck/?v=123' element={<UserDetails/>}/> */}
+         
            {/* nested route*/}
             {/* <Route path='/books'>
                  <Route index element={<Books/>}/>
