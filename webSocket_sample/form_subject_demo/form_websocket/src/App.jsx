@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import {io} from 'socket.io-client'
 
-const socket = io('localhost:8080')
+const socket = io(import.meta.env.VITE_REACT_APP_SERVER_URL)
 
 export default function  App  (){
   const [data, setData]= useState({name:'',age:0})

@@ -1,6 +1,8 @@
 const {Server} = require('socket.io')
 const http = require('http')
 
+import 'dotenv/config';
+
 const server = http.createServer()
 
 // data store (tmp)
@@ -29,4 +31,4 @@ io.on("connection",(socket)=>{
     })
 })
 
-server.listen(8080,()=>console.log('server started....'))
+server.listen(process.env.PORT||8080,()=>console.log('server started....'))
