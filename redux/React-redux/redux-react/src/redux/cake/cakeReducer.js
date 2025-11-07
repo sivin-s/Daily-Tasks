@@ -18,6 +18,7 @@ const initialState={
 // }
 
 const cakeReducer = (state=initialState,action)=>{
+    console.log('ac>',action)
  switch(action.type){
     case BUY_CAKE:
         return{
