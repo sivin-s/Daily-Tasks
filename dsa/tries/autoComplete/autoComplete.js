@@ -30,14 +30,14 @@ class Trie{
         return curNode.isEndOfString
     }
     // auto complete
-    autoComplete(word){
+    autoComplete(prefix){
         let curNode = this.root
-        for(const char of word){
+        for(const char of prefix){
             if(!curNode.children[char]) return []
             curNode = curNode.children[char]
         }
         let list =[]
-        this.collectWord(curNode,word,list)
+        this.collectWord(curNode,prefix,list)
         return list
     }
     collectWord(node,word,list){
@@ -56,3 +56,6 @@ trie.insert("hello")
 trie.insert("world")
 
 console.log(trie.autoComplete("h"))
+
+
+

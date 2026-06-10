@@ -48,6 +48,7 @@ class BinaryTree {
     let depth = 0;
     while (queue.length > 0) {
       let level = queue.length;
+      console.log('l>',level)
       depth++;
       for (let i = 0; i < level; i++) {
         const node = queue.shift();
@@ -134,13 +135,12 @@ class BinaryTree {
 
 const binaryTree = new BinaryTree();
 binaryTree.add(5);
-binaryTree.add(50);
-binaryTree.add(100);
+binaryTree.add(10);
+binaryTree.add(15);
 binaryTree.add(-100);
-binaryTree.add(-300);
-binaryTree.add(300);
-console.log(binaryTree.bfs());
-binaryTree.delete(-100);
-console.log(binaryTree.bfs());
-// console.log(binaryTree.maxDepthBFS())
-console.log(binaryTree.minDepth());
+binaryTree.add(5);
+// console.log(binaryTree.bfs());
+// binaryTree.delete(-100);
+// console.log(binaryTree.bfs());
+console.log(binaryTree.maxDepthBFS())
+// console.log(binaryTree.minDepth());

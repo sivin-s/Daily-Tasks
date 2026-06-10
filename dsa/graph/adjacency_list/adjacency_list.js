@@ -30,6 +30,9 @@ class GRAPH{  // undirected graph (use in sparse graph)
     }
 
     hasEdge(vertex1,vertex2){
+        if(!this.adjacencyList[vertex1] || !this.adjacencyList[vertex2]){
+            return false;
+        }
         return(
             this.adjacencyList[vertex1].has(vertex2)&&this.adjacencyList[vertex2].has(vertex1)
         )

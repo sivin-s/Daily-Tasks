@@ -33,7 +33,7 @@ class HashTable{
   
     }
     get(key){
-        const index=this.#_hash(key)
+        const index=this.#_hash(key) // fix
         // return this.table[index]
         const bucket = this.table[index]
         if(bucket){
